@@ -9,9 +9,6 @@ from lightning.fabric.utilities.load import _load_distributed_checkpoint
 
 def _format_checkpoint(checkpoint: dict[str, Any]) -> dict[str, Any]:
     """Converts the special FSDP checkpoint format to the standard format the Lightning Trainer can load."""
-    # Rename the model key
-    # import pdb; pdb.set_trace()
-    # checkpoint["state_dict"] = checkpoint.pop("model")
     checkpoint.update(checkpoint["state_dict"])
     checkpoint.pop("state_dict")
 
