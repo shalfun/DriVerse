@@ -310,7 +310,6 @@ class LightningModelForTrain(pl.LightningModule):
             )
             loss = torch.nn.functional.mse_loss(noise_pred.float(), training_target.float())
             loss = loss * self.pipe.scheduler.training_weight(timestep)
-            loss = timestep+loss # test
             # free_memory()
             # Record log
             self.log("train_loss", loss, prog_bar=True)
